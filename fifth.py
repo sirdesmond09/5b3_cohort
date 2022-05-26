@@ -40,7 +40,6 @@ import random
 options = ["r", "p", "s"]
 trial = 3
 score = 0
-
 while trial >0:
     print("""\nSelect R for rock, P for paper and S for scissors.""")
     com_choice = random.choice(options)
