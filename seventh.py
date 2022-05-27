@@ -21,18 +21,18 @@
 # print(j)
 
 
-# import random 
-# import string
+import random 
+import string
 
-# def generate_otp(n):
-#     """Generates n*2 length of otp"""
+def generate_otp(n):
+    """Generates n*2 length of otp"""
     
-#     otp = []
-#     for _ in range(n):
-#         otp.append(str(random.choice(range(10))))
-#         otp.append(random.choice(string.ascii_letters))
-#     random.shuffle(otp)
-#     return "".join(otp)
+    otp = []
+    for _ in range(n):
+        otp.append(str(random.choice(range(10))))
+        otp.append(random.choice(string.ascii_letters))
+    random.shuffle(otp)
+    return "".join(otp)
 
 # print(generate_otp(8))
 
@@ -62,8 +62,8 @@
 #           print(num)
 #           break
 
-x = 0
-for i in range(10):
-  for j in range(-1, -10, -1):
-    x += 1
-    print(x)
+# x = 0
+# for i in range(10):
+#   for j in range(-1, -10, -1):
+#     x += 1
+#     print(x)
