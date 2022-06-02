@@ -1,0 +1,2 @@
+Something different!This was written in append mode.
+This was written in append mode. This was written in append mode.
