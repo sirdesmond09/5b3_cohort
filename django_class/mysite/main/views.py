@@ -3,16 +3,31 @@ from django.http.response  import HttpResponse
 
 
 def home(request):
-    
-    return HttpResponse("<h3>Welcome to cohort 5b3!</h3>")
+    context = {
+        "page": "home"
+    }
+    return render(request, "home.html", context)
 
 def about(request):
-    
-    return HttpResponse("<h3>This is what is about us!</h3>")
+    data = {
+        "page": "about"
+    }
+    return render(request, "about.html", data)
 
 
-def calculate_interest(request, principal, rate, time):
-    s_i = principal*(rate/100)*time
+def calculate_interest(request):
+    s_i = None
     
-    return HttpResponse(f"""<h2 style="color:red">Simple Interest</h2>
-    <p>The simple interest is {s_i}</p>""")
+    if request.method == "POST":
+        principal = int(request.POST.get("principal"))
+        rate = int(request.POST.get("rate"))
+        time = int(request.POST.get("time"))
+        
+        s_i = round(principal*(rate/100)*time, 2)
+        
+    data = {
+        "page": "calculator",
+        "result" : s_i,
+        
+    }
+    return render(request, "calculator.html", data)
