@@ -7,8 +7,13 @@ from .models import Employee
 from rest_framework.views import APIView; 
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.exceptions import NotFound, PermissionDenied
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 class EmployeeListView(APIView):
+    
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
     
 
     def get(self, request, format=None):
@@ -56,6 +61,8 @@ class EmployeeListView(APIView):
     
 
 class EmployeeDetailView(APIView):
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
     
     def get_object(self, employee_id):
         try:
