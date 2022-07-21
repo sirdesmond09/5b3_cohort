@@ -41,7 +41,10 @@ class EmployeeListView(APIView):
         
         if serializer.is_valid():
             serializer.validated_data["employee_num"] = "".join([str(random.choice(range(10))) for _ in range(6)])
+            
+            
             serializer.save()
+            
             
             
             data = {
