@@ -2,13 +2,14 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import action
-from rest_framework.authentication import BasicAuthentication
+from rest_framework.authentication import BasicAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAdminUser
 from django.contrib.auth import get_user_model
 from .serializers import UserSerializer
 from drf_yasg.utils import swagger_auto_schema
 from .permissions import IsAdminOrSignUp
 from django.contrib.auth.hashers import make_password
+from rest_framework.authtoken.models import Token
 
 User = get_user_model()
 # Create your views here.
@@ -16,7 +17,7 @@ User = get_user_model()
 
 class UserListCreateView(APIView):
     
-    authentication_classes = [BasicAuthentication]
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsAdminOrSignUp]
     
     
@@ -45,7 +46,11 @@ class UserListCreateView(APIView):
         
         if serializer.is_valid():
             serializer.validated_data["password"] = make_password(serializer.validated_data.get("password"))
-            serializer.save()
+            
+            
+            user = User.objects.create(**serializer.validated_data)
+            
+            Token.objects.create(user=user)
             
             
             data = {

@@ -7,12 +7,12 @@ from .models import Employee
 from rest_framework.views import APIView; 
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.exceptions import NotFound, PermissionDenied
-from rest_framework.authentication import BasicAuthentication
+from rest_framework.authentication import BasicAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
 class EmployeeListView(APIView):
     
-    authentication_classes = [BasicAuthentication]
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     
 

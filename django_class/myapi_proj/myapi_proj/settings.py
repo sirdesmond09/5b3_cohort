@@ -138,5 +138,12 @@ AUTH_USER_MODEL = 'account.CustomUser'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 DEFAULT_FROM_EMAIL = "Femi from Bamboo <noreply@bamboo.com>"
 
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+# EMAIL_PORT = 587
+EMAIL_HOST_USER = os.getenv("EMAIL_USERNAME")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
+EMAIL_PORT = 587
+EMAIL_USE_SSL = True
