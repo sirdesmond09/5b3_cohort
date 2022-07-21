@@ -45,9 +45,10 @@ INSTALLED_APPS = [
     'main',
     'account',
     'rest_framework',
+    'rest_framework.authtoken',
     'drf_yasg',
-    
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
